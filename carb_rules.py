@@ -1,3 +1,6 @@
+from cycle_patterns import CYCLE_PATTERNS
+
+
 def carb_targets(weight_kg: float) -> dict:
     """
     Return carb targets (g/day) based on body weight.
@@ -29,3 +32,10 @@ def recommend_cycle(goal_diff_kg: float, eat_out: bool) -> str:
         return "low → mid → high → low → mid"
 
     return "low → mid → mid → high → low"
+
+def choose_cycle(goal_diff_kg: float, eat_out: bool):
+    if eat_out:
+        return CYCLE_PATTERNS["social_friendly"]
+    if goal_diff_kg <= 5:
+        return CYCLE_PATTERNS["rapid_fat_loss"]
+    return CYCLE_PATTERNS["balanced"]
